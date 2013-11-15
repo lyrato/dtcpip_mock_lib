@@ -1,11 +1,10 @@
-
 INC_DIRS = ../src
 
 MOCKDLL_SRC_DIR    = ../src
 MOCKDLL_LIBNAME    = libmockdll.a
 
 COPT = -c -efi2 -fPIC\
-       -D_ARCH_IA32 -DUPNP_MICRO_STACK -DMICROSTACK_NO_STDAFX -DMPE_LITTLE_ENDIAN -O0 -g \
+       -D_ARCH_IA32 -O0 -g \
        $(addprefix -I, $(INC_DIRS))
 CSRC := $(wildcard $(MOCKDLL_SRC_DIR)/*.c)
 
