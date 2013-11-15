@@ -1,4 +1,3 @@
-
 // COPYRIGHT_BEGIN
 //  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER
 //
@@ -34,6 +33,7 @@
 
 #include <stdio.h>
 #include <string.h> // memcpy, strrchr, strlen
+#include <stdlib.h>
 
 #if defined( WIN32 )
     #define snprintf _snprintf
