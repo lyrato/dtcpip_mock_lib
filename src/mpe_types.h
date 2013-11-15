@@ -33,13 +33,6 @@
 
 #include <os_types.h>
 
-/*
- ** Ensure that either MPE_BIG_ENDIAN or MPE_LITTLE_ENDIAN is defined for all
- ** MPE related code.
- */
-#if !defined(MPE_BIG_ENDIAN) && !defined(MPE_LITTLE_ENDIAN)
-#error Either MPE_BIG_ENDIAN or MPE_LITTLE_ENDIAN must be defined
-#endif
 
 /*
  * It is assumed that the following integer types are defined by the platform,
