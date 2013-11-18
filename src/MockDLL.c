@@ -347,3 +347,33 @@ int dtcpip_snk_close(int session_handle)
 
     return ret_code;
 }
+
+unsigned int dtcpip_get_encrypted_sz(unsigned int cleartextSz, unsigned int basePCPPayload)
+{
+    unsigned int nBasePacketPadding = 16 - basePCPPayload % 16;
+    if (nBasePacketPadding == 16)
+    {
+        nBasePacketPadding = 0;
+    }
+    unsigned int nBasePacketSz = basePCPPayload + nBasePacketPadding + 14 /* header */;
+    
+
+    unsigned int nLeftoverBytes = cleartextSz % basePCPPayload;
+    unsigned int nNumBasePackets = (cleartextSz - nLeftoverBytes) / basePCPPayload;
+    unsigned int nLeftoverPadding = 16 - nLeftoverBytes % 16;
+    if (nLeftoverPadding == 16)
+    {
+        nLeftoverPadding = 0;
+    }
+
+    unsigned int nLeftoverPacketSz = nLeftoverBytes + nLeftoverPadding + 14 /* header */;
+
+    unsigned int encryptedSz = nNumBasePackets * nBasePacketSz;
+    if (nLeftoverBytes != 0)
+    {
+        encryptedSz += nLeftoverPacketSz;
+    }
+
+    return encryptedSz;
+}
+

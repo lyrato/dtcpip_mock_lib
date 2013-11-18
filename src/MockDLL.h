@@ -37,6 +37,8 @@
 
 int dtcpip_cmn_init(const char* storage_path);
 void dtcpip_cmn_get_version(char* string, size_t length);
+unsigned int dtcpip_get_encrypted_sz(unsigned int cleartextSz, unsigned int basePCPPayload);
+
 
 int dtcpip_src_init(unsigned short dtcp_port);
 int dtcpip_src_open(int* session_handle, int is_audio_only);
